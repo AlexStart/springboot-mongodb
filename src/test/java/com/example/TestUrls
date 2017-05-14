@@ -1,0 +1,4 @@
+Testing a REST Service
+https://spring.io/guides/tutorials/bookmarks/
+
+mongod -f E:\mongodb-win32-x86_64-2008plus-2.6.11\mongo.config
