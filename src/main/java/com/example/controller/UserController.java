@@ -21,28 +21,28 @@ public class UserController {
 
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping()
     public User createUser(@RequestBody User user){
         return userService.createUser(user);
     }
 
-    @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value="/{id}")
     public String removeUser(@PathVariable String id){
         userService.removeUser(id);
-        return "SUCCESS";
+        return "USER WITH ID : "+id+" IS SUCCESSFULLY REMOVED!";
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping()
     public User updateUser(@RequestBody User user){
         return userService.updateUser(user);
     }
 
-    @RequestMapping(method = RequestMethod.PATCH)
+    @PatchMapping()
     public User patchUser(@RequestBody User user){
         return userService.patchUser(user);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping()
     public List<User> findAllUser(){
         return userService.findAllUser();
     }
@@ -52,7 +52,7 @@ public class UserController {
         return userService.findUser(id);
     }
 
-    @RequestMapping(value="/age/{age}",method = RequestMethod.GET)
+    @GetMapping(value="/age/{age}")
     public List<User> findUserOlderThan(@PathVariable Integer age){
         return userService.findUserOlderThan(age);
     }

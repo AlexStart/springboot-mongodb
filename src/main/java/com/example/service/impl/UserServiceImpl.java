@@ -31,31 +31,36 @@ public class UserServiceImpl implements IUserService {
 
 
     public User updateUser(User user){
-        return new User();
+        return userRepository.save(user);
     }
 
 
     public User patchUser(User user){
-        return new User();
+        return userRepository.save(user);
     }
 
 
     public List<User> findAllUser(){
-        return new ArrayList<User>();
+        return userRepository.findAll();
     }
 
 
     public User findUser(String id){
-        User user = new User();
-        user.setName("Alex");
-        user.setAge(30);
-        createUser(user);
-        return userRepository.findOne(user.getId());
+
+        User foundUser = userRepository.findOne(id);
+
+        if(foundUser == null) {
+            User user = new User();
+            user.setName("***Alex-Test***");
+            user.setAge(30);
+            foundUser = createUser(user);
+        }
+        return foundUser;
     }
 
 
     public List<User> findUserOlderThan(Integer age){
-        return new ArrayList<User>();
+        return userRepository.findUserOlderThan(age);
     }
 
 }
